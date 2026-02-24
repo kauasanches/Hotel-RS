@@ -1,0 +1,68 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+:root {
+    /* Cor principal: */
+    --azul-marinho: #003366; /* Uma cor sóbria e clássica que transmite confiança, tranquilidade e profissionalismo. Ideal para o branding e como cor base do site. */
+
+    /* Cores secundarias: */
+    --dourado: #FFD700; /* Para detalhes que tragam uma sensação de luxo e sofisticação, como botões, bordas e chamadas para ação. */
+    --cinza-claro: #d3d3d3; /* Uma cor neutra e elegante para fundos e seções que precisam de suavidade, sem tirar o destaque das outras cores. */
+
+    /* Cor de texto: */
+    --cinza-escuro: #333333; /* Essencial para dar clareza, facilitar a leitura e criar contraste com as cores mais escuras. */
+
+    /* Cores de apoio: */
+    --bege-claro: #f5f5dc; /* Uma cor suave e aconchegante para dar uma sensação de acolhimento, ideal para fundos ou áreas com informações mais detalhadas. */
+
+    /* Cores de destaque: */
+    --turquesa-claro: #40e0d0; /* Uma cor vibrante que pode ser usada para destacar botões de ação (ex: "Reservar agora") ou links importantes. */
+    --vermelho-escuro: #8b0000; /* Para criar contraste e destacar elementos urgentes ou promoções. */
+
+    /*
+    Fundo do site: Branco ou Bege Claro.
+    Cabeçalho e rodapé: Azul Marinho com textos em Branco ou Cinza Claro.
+    Botões e elementos interativos: Dourado ou Turquesa Claro.
+    Textos principais e descrições: Cinza Escuro.
+    */
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--bege-claro);
+    color: var(--cinza-escuro);
+    font-family: 'Poppins', sans-serif;
+}
+
+.cabecalho {
+    background-color: var(--azul-marinho);
+    color: var(--cinza-claro);
+    padding: 10px;
+
+
+    & a {
+        color: var(--dourado);
+        text-decoration: none;
+        transition: .1s ease-in-out;
+    }
+
+    & a:hover {
+        text-decoration: underline;
+        text-shadow: 0 0 5px black;
+    }
+
+    & nav ul {
+        display: flex;
+        justify-content: flex-end; /* Alinha os links à direita */
+        list-style-type: none;
+        padding: 0;
+    }
+
+    & nav ul li {
+        margin: 0 15px; /* Espaço entre os links */
+    }
+}
