@@ -32,16 +32,39 @@
     box-sizing: border-box;
 }
 
+html, body {
+    height: 100%;
+    margin: 0;
+}
+
 body {
+    display: flex;
+    flex-direction: column;
     background-color: var(--bege-claro);
     color: var(--cinza-escuro);
     font-family: 'Poppins', sans-serif;
+    background: url('../../frontend/assets/img/fundo.png') center center fixed no-repeat;
+    background-size: cover;
+}
+
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.35);
+    z-index: -1;
+}
+
+.container {
+    flex: 1;
 }
 
 .cabecalho {
     background-color: var(--azul-marinho);
     color: var(--cinza-claro);
-    padding: 10px;
+    padding: 15px;
+    display: flex;
+    justify-content: space-between;
 
 
     & a {
@@ -64,5 +87,88 @@ body {
 
     & nav ul li {
         margin: 0 15px; /* Espaço entre os links */
+    }
+}
+
+.formulario {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.formulario form {
+    width: 800px;
+    height: 100%;
+    margin: 70px 50px;
+
+    background: rgba(255, 255, 255, 0.3);
+    backdrop-filter: blur(8px);
+
+    border-radius: 15px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+    text-align: center;
+}
+
+.formulario form {
+    /* width: 800px;
+    height: 300px;
+    margin: 70px 50px;
+    background-color: white;
+    border-radius: 15px;
+    box-shadow: 0 0 10px rgba(128, 128, 128, 0.5);
+    text-align: center; */
+
+    & h1 {
+        margin: 20px;
+        color: var(--bege-claro);
+    }
+
+    & input {
+        margin: 25px;
+        border: none;
+        border-radius: 5px;
+        padding: 10px;
+        transition: .2s ease-in-out;
+    }
+
+    & input::placeholder {
+        font-size: 15px;
+    }
+
+    & input:focus {
+        outline: none;
+        border-bottom: 2px solid var(--dourado);
+        box-shadow: 0 2px 0 var(--dourado);
+    }
+
+    & .btn-enviar {
+        border-radius: 5px;
+        transition: .2s ease-in-out;
+        padding: 10px 20px;
+        display: block;
+        margin: 30px auto;
+        background-color: var(--dourado);
+        font-size: 20px;
+        font-family: 'Poppins', sans-serif;
+        font-weight: bold;
+    }
+
+    & .btn-enviar:hover {
+        cursor: pointer;
+        background-color: white;
+        border: 2px solid var(--dourado);
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    }
+}
+
+footer {
+    background-color: var(--cinza-escuro);
+    color: var(--cinza-claro);
+    text-align: center;
+    padding: 10px;
+
+    & a {
+        color: var(--dourado);
     }
 }
