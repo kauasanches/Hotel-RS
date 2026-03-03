@@ -1,4 +1,4 @@
-from flask import Flask, request
+from flask import Flask
 
 app = Flask(__name__)
 
@@ -6,10 +6,5 @@ app = Flask(__name__)
 
 def home():
     return "Bom dia galera 2B!"
-
-@app.route('/login', methods=['POST'])
-def login():
-    username = request.form.get('username') # Captura o valor
-    return f"Olá, {username}"
 
 app.run()
