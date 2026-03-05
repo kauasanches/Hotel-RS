@@ -43,7 +43,7 @@ body {
     background-color: var(--bege-claro);
     color: var(--cinza-escuro);
     font-family: 'Poppins', sans-serif;
-    background: url('../../frontend/assets/img/fundo4.jpg') center center fixed no-repeat;
+    background: url('../assets/img/fundo4.jpg') center center fixed no-repeat;
     background-size: cover;
 }
 
@@ -118,6 +118,7 @@ body::before {
     /* background-color: black; */
     
     & h1 {
+        margin-top: 10px;
         margin: 20px;
         color: var(--bege-claro);
     }

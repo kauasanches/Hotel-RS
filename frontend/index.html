@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../static/css/style.css">
+    <!-- <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}?v=1"> -->
     <title>Bem vindo(a) - Hotel RS</title>
 </head>
 <body>
@@ -13,21 +14,72 @@
 
             <nav>
                 <ul>
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="consultar.html">Consultar</a></li>
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/consulta">Consultar</a></li>
                 </ul>
             </nav>
         </header>
+
+        <!-- <div>
+            <form class="formCadastro">
+                <table>
+                    <td>
+                        <div>
+                            <div>
+                                <label>Email:</label>
+                                <input type="email" name="email">
+                            </div>
+                        </div>
+                        <div>
+                            <div>
+                                <label>Nome:</label>
+                                <input type="text" name="nome">
+                            </div>
+                        </div>
+                    </td>
+                    <td>
+                        <div>
+                            <div>
+                                <label>CPF:</label>
+                                <input type="text" name="cpf">
+                            </div>
+                        </div>
+                        <div>
+                            <div>
+                                <label>Endereço:</label>
+                                <input type="text" name="endereco">
+                            </div>
+                        </div>
+                    </td>
+                    <td>
+                        <div>
+                            <div>
+                                <label>Telefone:</label>
+                                <input type="text" name="telefone">
+                            </div>
+                        </div>
+                        <div>
+                            <div>
+                                <label>OBS:</label>
+                                <textarea name="obs">
+        
+                                </textarea>
+                            </div>
+                        </div>
+                    </td>
+                </table>
+            </form>
+        </div> -->
 
         <div class="formulario">
             <form>
                 <h1>Agende já seu horário!</h1>
                 <div class="container-form">
                     <div class="info-person">
-                        <p>Digite seu nome:</p>
-                        <input type="text" placeholder="Ex: Nome Sobrenome" required>
                         <p>Digite seu email:</p>
-                        <input type="email" placeholder="Ex: seu.email@email.com" required><br>
+                        <input type="email" placeholder="Ex: seu.email@email.com" required>
+                        <p>Digite seu nome:</p>
+                        <input type="text" placeholder="Ex: Nome Sobrenome" required><br>
                     </div>
                     <div class="info-important">
                         <p>Digite seu número de telefone:</p>
@@ -37,17 +89,10 @@
                     </div>
                 </div>
                 <div class="container-submit">
-                    <input type="submit" class="btn-enviar" value="Cadastrar-se" required>
+                    <input type="submit" class="btn-enviar" value="Cadastrar-se">
                 </div>
             </form>
         </div>
-    </div>
-
-    <div class="teste-input">
-        <form action="/login" method="POST">
-            <input type="text" name="username">
-            <button type="submit">Enviar</button>
-        </form>
     </div>
 
     <footer>
