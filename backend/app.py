@@ -1,6 +1,9 @@
 import os
 from flask import Flask, send_from_directory
-
+import openpyxl as op # Para ver e editar arquivos .xlsx
+from datetime import (
+    datetime,
+)
 # Caminho base do projeto (uma pastacima do backend)
 BASE_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
 
@@ -9,6 +12,22 @@ FRONTEND_DIR = os.path.join(BASE_DIR, "frontend")
 
 # Pasta static (CSS)
 STATIC_DIR = os.path.join(BASE_DIR, "static")
+
+# Pasta db (Banco de Dados)
+DB_DIR = os.path.join(BASE_DIR, "db")
+EXCEL_FILE = os.path.join(DB_DIR, "clients.xlsx")
+
+# Cabecalhos das colunas do Excel (linha 1)
+COLUNAS = [
+    "ID",
+    "Nome",
+    "CPF",
+    "Email",
+    "Telefone",
+    "Endereço",
+    "Observações",
+    "Data Cadastro"
+]
 
 app = Flask(__name__, static_folder=STATIC_DIR, static_url_path="/static")
 

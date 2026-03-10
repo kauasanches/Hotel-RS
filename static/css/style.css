@@ -80,13 +80,13 @@ body::before {
 
     & nav ul {
         display: flex;
-        justify-content: flex-end; /* Alinha os links à direita */
+        justify-content: flex-end;
         list-style-type: none;
         padding: 0;
     }
 
     & nav ul li {
-        margin: 0 15px; /* Espaço entre os links */
+        margin: 0 15px;
     }
 }
 
@@ -175,4 +175,28 @@ footer {
     & a {
         color: var(--dourado);
     }
+}
+
+
+/* CSS DO CONSULTAR.HTML */
+
+
+.consulta {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.consulta form {
+    width: 800px;
+    height: 100%;
+    margin: 70px 50px;
+
+    background: rgba(255, 255, 255, 0.3);
+    backdrop-filter: blur(8px);
+
+    border-radius: 15px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+    text-align: center;
 }
