@@ -52,4 +52,5 @@ if __name__ == "__main__":
     print("Base: ", BASE_DIR)
     print("Front: ", FRONTEND_DIR)
     print("Static:", STATIC_DIR)
+    print("DB:", DB_DIR)
     app.run(debug=True)
