@@ -10,8 +10,8 @@
 <body>
     <div class="container">
         <nav>
-            <div>
-                <a href="/">🏨 Hotel RS</a>
+            <div class="cabecalho">
+                <a href="/" class="titulo_nav">🏨 Hotel RS</a>
                 <button type="button">
                     <span></span>
                 </button>
@@ -27,21 +27,11 @@
                 </div>
             </div>
         </nav>
-        <!-- <nav>
-            <header class="cabecalho">
-                <a href="/">Hotel RS - Seja bem-vindo(a)!</a>
-                <div>
-                    <ul>
-                        <li><a href="/">Home</a></li>
-                        <li><a href="/consulta">Consultar</a></li>
-                    </ul>
-                </div>
-            </header>
-        </nav> -->
-
-        <!-- <div>
-            <form class="formCadastro">
-                <table>
+        
+        <div class="formulario">
+            <form>
+                <h1>Agende já seu horário!</h1>
+                <table class="container-form">
                     <td>
                         <div>
                             <div>
@@ -80,33 +70,11 @@
                         <div>
                             <div>
                                 <label>OBS:</label>
-                                <textarea name="obs">
-        
-                                </textarea>
+                                <textarea name="obs"></textarea>
                             </div>
                         </div>
                     </td>
                 </table>
-            </form>
-        </div> -->
-
-        <div class="formulario">
-            <form>
-                <h1>Agende já seu horário!</h1>
-                <div class="container-form">
-                    <div class="info-person">
-                        <p>Digite seu email:</p>
-                        <input type="email" placeholder="Ex: seu.email@email.com" required>
-                        <p>Digite seu nome:</p>
-                        <input type="text" placeholder="Ex: Nome Sobrenome" required><br>
-                    </div>
-                    <div class="info-important">
-                        <p>Digite seu número de telefone:</p>
-                        <input type="tel" placeholder="Ex: 12 3456 7890" required>
-                        <p>Digite seu CPF:</p>
-                        <input type="text" placeholder="Ex: 123.456.789.00" required><br>
-                    </div>
-                </div>
                 <div class="container-submit">
                     <input type="submit" class="btn-enviar" value="Cadastrar-se">
                 </div>
@@ -115,7 +83,7 @@
     </div>
 
     <footer>
-        <p>Todos os direitos reservados. Desenvolvido por <a href="https://github.com/kauasanches">Kauã Sanches</a></p>
+        <p>Todos os direitos reservados. Desenvolvido por <a href="https://github.com/kauasanches" target="_blank">Kauã Sanches</a></p>
     </footer>
 </body>
 </html>

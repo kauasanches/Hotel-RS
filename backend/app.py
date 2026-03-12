@@ -45,7 +45,6 @@ app = Flask(__name__, static_folder=STATIC_DIR, static_url_path="/static")
 # Pagina principal
 @app.route("/")
 def home():
-    print(send_from_directory(FRONTEND_DIR, "consultar.html"))
     # return "Bom dia galera 2B!"
     return send_from_directory(FRONTEND_DIR, "index.html")
 
@@ -64,5 +63,6 @@ if __name__ == "__main__":
     print("Front: ", FRONTEND_DIR)
     print("Static:", STATIC_DIR)
     print("DB:", DB_DIR)
+    print("Excel:", EXCEL_FILE)
     init_excel()
     app.run(debug=True)
