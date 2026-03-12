@@ -1,6 +1,6 @@
 import os
 from flask import Flask, send_from_directory
-import openpyxl as op # Para ver e editar arquivos .xlsx
+import openpyxl # Para ver e editar arquivos .xlsx
 from datetime import (
     datetime,
 )
@@ -15,7 +15,7 @@ STATIC_DIR = os.path.join(BASE_DIR, "static")
 
 # Pasta db (Banco de Dados)
 DB_DIR = os.path.join(BASE_DIR, "db")
-EXCEL_FILE = os.path.join(DB_DIR, "clients.xlsx")
+EXCEL_FILE = os.path.join(DB_DIR, "clientes.xlsx")
 
 # Cabecalhos das colunas do Excel (linha 1)
 COLUNAS = [
@@ -28,6 +28,17 @@ COLUNAS = [
     "Observações",
     "Data Cadastro"
 ]
+
+def init_excel():
+    if not os.path.exists(DB_DIR):
+        os.makedirs(DB_DIR) # Cria a pasta se não existir
+    
+    if not os.path.exists(EXCEL_FILE):
+        workbook = openpyxl.Workbook() # Cria a planilha
+        sheet = workbook.active # Pega a planilha ativa
+        sheet.title = "Clientes" # Nomeia a aba principal
+        sheet.append(COLUNAS) # Adiciona os títulos das colunas
+        workbook.save(EXCEL_FILE) # Salva o arquivo Excel
 
 app = Flask(__name__, static_folder=STATIC_DIR, static_url_path="/static")
 
@@ -53,4 +64,5 @@ if __name__ == "__main__":
     print("Front: ", FRONTEND_DIR)
     print("Static:", STATIC_DIR)
     print("DB:", DB_DIR)
+    init_excel()
     app.run(debug=True)
