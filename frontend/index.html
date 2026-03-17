@@ -29,20 +29,20 @@
         </nav>
         
         <div class="formulario">
-            <form>
+            <form id="formCadastro">
                 <h1>Agende já seu horário!</h1>
                 <table class="container-form">
                     <td>
                         <div>
                             <div>
-                                <label>Email:</label>
-                                <input type="email" name="email">
+                                <label>Nome:</label>
+                                <input type="text" name="nome">
                             </div>
                         </div>
                         <div>
                             <div>
-                                <label>Nome:</label>
-                                <input type="text" name="nome">
+                                <label>Email:</label>
+                                <input type="email" name="email">
                             </div>
                         </div>
                     </td>
@@ -50,7 +50,7 @@
                         <div>
                             <div>
                                 <label>CPF:</label>
-                                <input type="text" name="cpf">
+                                <input type="text" name="cpf" maxlength="11">
                             </div>
                         </div>
                         <div>
@@ -85,5 +85,7 @@
     <footer>
         <p>Todos os direitos reservados. Desenvolvido por <a href="https://github.com/kauasanches" target="_blank">Kauã Sanches</a></p>
     </footer>
+
+    <script src="js/main.js"></script>
 </body>
 </html>
