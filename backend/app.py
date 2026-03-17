@@ -17,6 +17,10 @@ STATIC_DIR = os.path.join(BASE_DIR, "static")
 DB_DIR = os.path.join(BASE_DIR, "db")
 EXCEL_FILE = os.path.join(DB_DIR, "clientes.xlsx")
 
+# Pasta do JS
+JS_DIR = os.path.join(BASE_DIR, "frontend", "js")
+JS_FILE = os.path.join(JS_DIR, "main.js")
+
 # Cabecalhos das colunas do Excel (linha 1)
 COLUNAS = [
     "ID",
@@ -64,5 +68,7 @@ if __name__ == "__main__":
     print("Static:", STATIC_DIR)
     print("DB:", DB_DIR)
     print("Excel:", EXCEL_FILE)
+    print("Pasta JS:", JS_DIR)
+    print("JS:", JS_FILE)
     init_excel()
     app.run(debug=True)
