@@ -101,8 +101,36 @@ def cadastrar_cliente():
 
         # Cria uma nova linha com os dados informados
         novo_cliente = [
-            
+            new_id,
+            data.get("nome"),
+            data.get("cpf"),
+            data.get("email"),
+            data.get("telefone"),
+            data.get("endereco"),
+            data.get("observacoes", ""), # Campo opcional
+            datetime.now().strftime("%Y-%m-%d") # Data atual
         ]
+
+        sheet.append(novo_cliente) # Adiciona nova linha no Excel
+        workbook.save(EXCEL_FILE) # Salva alterações
+
+        # Retorna mensagem de sucesso
+        return (
+            jsonify(
+                {
+                "status": "sucess",
+                "message": "Cliente cadastrado com sucesso!",
+                "id": new_id
+                }
+            ),
+            201,
+        )
+    except Exception as e:
+        # Tratamento deerro genérico
+        return (
+            jsonify ({"status": "error", "message": f"Erro ao salvar no servidor: {e}"}),
+            500,
+        )
 
 if __name__ == "__main__":
     print("Base: ", BASE_DIR)
