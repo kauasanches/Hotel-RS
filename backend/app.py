@@ -1,5 +1,5 @@
 import os
-from flask import Flask, send_from_directory
+from flask import Flask, send_from_directory, request, jsonify
 import openpyxl # Para ver e editar arquivos .xlsx
 from datetime import (
     datetime,
@@ -61,6 +61,48 @@ def consulta_page():
 @app.route("/alterar")
 def alterar_page():
     return send_from_directory(FRONTEND_DIR, "alterar.html")
+
+# Rota para servir imagens, sripts ou outros arquivos na pasta "assets"
+@app.route("/assets/<path:filename>")
+def assets(filename):
+    return send_from_directory("../frontend/assets", filename)
+
+# -------------------------------------------------------------------------------------------------
+# CADASTRAR CLIENTE
+# -------------------------------------------------------------------------------------------------
+@app.route("/cadastrar", methods=["POST"])
+def cadastrar_cliente():
+    """
+    Recebe os dados do formulário (em JSON), valida e salva um novo cliente
+    """
+    try:
+        data = request.json # Dados enviados do frontend via POST (JSON)
+
+        # Capmos obrigatórios que o usuário deve preencher
+        required_fields = ["nome", "cpf", "email", "telefone", "endereco"]
+        if not all(field in data and data[field] for field in required_fields):
+            return (
+                jsonify(
+                    {
+                        "status": "error",
+                        "message": "Todos os campos obrigatórios devem ser preenchidos."
+                    }
+                ),
+                400,
+            )
+        workbook = openpyxl.load_workbook(EXCEL_FILE) # Abre o arquivo Excel
+        sheet = workbook.active
+
+        # Cria um ID automático (último ID + 1)
+        last_id = 0
+        if sheet.max_row > 1:
+            last_id = sheet.cell(row=sheet.max_row, column=1).value or 0
+        new_id = last_id + 1
+
+        # Cria uma nova linha com os dados informados
+        novo_cliente = [
+            
+        ]
 
 if __name__ == "__main__":
     print("Base: ", BASE_DIR)
