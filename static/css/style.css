@@ -63,9 +63,10 @@ body::before {
 .cabecalho {
     background-color: var(--azul-marinho);
     color: var(--cinza-claro);
-    padding: 15px;
+    padding: 10px;
     display: flex;
     justify-content: space-between;
+    align-items: center;
 
     & .titulo_nav {
         font-family: "Archivo Black", sans-serif;
@@ -94,6 +95,13 @@ body::before {
     & #navbarNav ul li {
         margin: 0 15px;
     }
+}
+
+.logoImg {
+    /* width: 40px; */
+    height: 80px;
+    margin-right: 10px;
+    border-radius: 10px;
 }
 
 .formulario {
@@ -170,6 +178,13 @@ body::before {
     background-color: white;
     /* border: 3px solid var(--dourado); */
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+#mensagem {
+    margin-top: 20px;
+    color: var(--cinza-claro);
+    font-size: 18px;
+    text-shadow: 0px 0px 5px black;
 }
 
 footer {

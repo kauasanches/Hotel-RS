@@ -4,6 +4,7 @@ import openpyxl # Para ver e editar arquivos .xlsx
 from datetime import (
     datetime,
 )
+
 # Caminho base do projeto (uma pastacima do backend)
 BASE_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
 

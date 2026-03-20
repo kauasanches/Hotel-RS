@@ -1,9 +1,9 @@
-alert("JS carregou!")
+// alert("JS carregou!")
 
 // Espera quando o HTML carregar completamente antes de executar o JavaScript
 document.addEventListener("DOMContentLoaded", function() {
 
-    // Aqui estamos pegando o formulário pelo ID
+    // Aqui estamos pegando o formulário pelo ID do HTML
     const formCadastro = document.getElementById("formCadastro");
 
     if (formCadastro) {
