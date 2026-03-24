@@ -4,7 +4,6 @@ import openpyxl # Para ver e editar arquivos .xlsx
 from datetime import (
     datetime,
 )
-
 # Caminho base do projeto (uma pastacima do backend)
 BASE_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
 
@@ -67,6 +66,13 @@ def alterar_page():
 @app.route("/assets/<path:filename>")
 def assets(filename):
     return send_from_directory("../frontend/assets", filename)
+
+# INFOS PROFESSOR
+# Nome: José Antônio dos Reis
+# CPF: 087.280.297.39
+# Email: apoio.klesis@gmail.com
+# Telefone: 41985147636
+# Rua das Nações Unidas, 871
 
 # -------------------------------------------------------------------------------------------------
 # CADASTRAR CLIENTE
