@@ -26,9 +26,20 @@ document.addEventListener("DOMContentLoaded", function() {
 
                 // Recebe a resposta do Flask (JSON)
                 const result = await resp.json()
-
+                
                 // Exibe a mensagem de retorno para o usuário
-                document.getElementById('mensagem').innerText = result.message;
+                msg = document.getElementById('mensagem');
+
+                // Limpa as classes de cor anteriores para não haver conflito
+                msg.classList.remove("red-error", "green-correct");
+
+                if (result.message.includes("Todos os campos")) {
+                    msg.classList.add("red-error");
+                    msg.innerText = result.message;
+                } else if (result.message.includes("Cliente cadastrado")) {
+                    msg.classList.add("green-sucess");
+                    msg.innerText = result.message;
+                }
 
                 // Limpa os campos após o envio
                 formCadastro.reset();

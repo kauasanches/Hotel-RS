@@ -18,6 +18,10 @@
     /* Cores de destaque: */
     --turquesa-claro: #40e0d0; /* Uma cor vibrante que pode ser usada para destacar botões de ação (ex: "Reservar agora") ou links importantes. */
     --vermelho-escuro: #8b0000; /* Para criar contraste e destacar elementos urgentes ou promoções. */
+    
+    /* Cores de condições */
+    --verde-sucesso: #28a745; /* É o tom mais comum em frameworks como Bootstrap. Passa confiança e é muito legível. */
+    --vermelho-erro: #dc3545; /* Este é o par perfeito para o verde. É o tom clássico de erro. */
 
     /*
     Fundo do site: Branco ou Bege Claro.
@@ -170,6 +174,21 @@ body::before {
     background-color: white;
     /* border: 3px solid var(--dourado); */
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+#mensagem {
+    margin: 20px 0;
+    text-shadow: 0px 0px 10px gray;
+}
+
+.red-error {
+    color: var(--vermelho-erro);
+    font-weight: bold;
+}
+
+.green-sucess {
+    color: var(--verde-sucesso);
+    font-weight: bold;
 }
 
 footer {
