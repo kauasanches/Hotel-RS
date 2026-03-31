@@ -1,0 +1,256 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Archivo+Black&display=swap');
+
+:root {
+    /* Cor principal: */
+    --azul-marinho: #003366; /* Uma cor sóbria e clássica que transmite confiança, tranquilidade e profissionalismo. Ideal para o branding e como cor base do site. */
+
+    /* Cores secundarias: */
+    --dourado: #FFD700; /* Para detalhes que tragam uma sensação de luxo e sofisticação, como botões, bordas e chamadas para ação. */
+    --cinza-claro: #d3d3d3; /* Uma cor neutra e elegante para fundos e seções que precisam de suavidade, sem tirar o destaque das outras cores. */
+
+    /* Cor de texto: */
+    --cinza-escuro: #333333; /* Essencial para dar clareza, facilitar a leitura e criar contraste com as cores mais escuras. */
+
+    /* Cores de apoio: */
+    --bege-claro: #f5f5dc; /* Uma cor suave e aconchegante para dar uma sensação de acolhimento, ideal para fundos ou áreas com informações mais detalhadas. */
+
+    /* Cores de destaque: */
+    --turquesa-claro: #40e0d0; /* Uma cor vibrante que pode ser usada para destacar botões de ação (ex: "Reservar agora") ou links importantes. */
+    --vermelho-escuro: #8b0000; /* Para criar contraste e destacar elementos urgentes ou promoções. */
+    
+    /* Cores de condições */
+    --verde-sucesso: #28a745; /* É o tom mais comum em frameworks como Bootstrap. Passa confiança e é muito legível. */
+    --vermelho-erro: #dc3545; /* Este é o par perfeito para o verde. É o tom clássico de erro. */
+
+    /*
+    Fundo do site: Branco ou Bege Claro.
+    Cabeçalho e rodapé: Azul Marinho com textos em Branco ou Cinza Claro.
+    Botões e elementos interativos: Dourado ou Turquesa Claro.
+    Textos principais e descrições: Cinza Escuro.
+    */
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    height: 100%;
+    margin: 0;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    background-color: var(--bege-claro);
+    color: var(--cinza-escuro);
+    font-family: 'Poppins', sans-serif;
+    background: url('../assets/img/fundo4.jpg') center center fixed no-repeat;
+    background-size: cover;
+}
+
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.4);
+    z-index: -1;
+}
+
+.container {
+    flex: 1;
+}
+
+.cabecalho {
+    background-color: var(--azul-marinho);
+    color: var(--cinza-claro);
+    padding: 15px;
+    display: flex;
+    justify-content: space-between;
+
+    & .titulo_nav {
+        font-family: "Archivo Black", sans-serif;
+        font-size: 24px;
+    }
+
+    & a {
+        color: var(--dourado);
+        text-decoration: none;
+        transition: .1s ease-in-out;
+    }
+
+    & a:hover {
+        /* text-decoration: underline; */
+        text-shadow: 0 0 5px black;
+    }
+
+    & #navbarNav ul {
+        display: flex;
+        justify-content: flex-end;
+        list-style-type: none;
+        padding: 0;
+    }
+
+    & #navbarNav ul li {
+        margin: 0 15px;
+    }
+}
+
+.formulario {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.formulario form {
+    width: 800px;
+    height: 100%;
+    margin: 70px 50px;
+
+    background: rgba(255, 255, 255, 0.3);
+    backdrop-filter: blur(8px);
+
+    border-radius: 15px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+    text-align: center;
+}
+
+.container-form {
+    margin: 15px 0px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    
+    & h1 {
+        margin-top: 10px;
+        margin: 20px;
+        color: var(--bege-claro);
+    }
+    
+    & input {
+        margin: 25px;
+        border: none;
+        border-radius: 5px;
+        padding: 10px;
+        transition: .2s ease-in-out;
+    }
+    
+    & input::placeholder {
+        font-size: 15px;
+    }
+    
+    & input:focus {
+        outline: none;
+        border-bottom: 2px solid var(--dourado);
+        box-shadow: 0 2px 0 var(--dourado);
+    }
+    
+}
+
+.btn-enviar {
+    border-radius: 5px;
+    border: none;
+    padding: 10px 20px;
+    display: block;
+    margin: 30px auto;
+    background-color: var(--dourado);
+    font-size: 20px;
+    font-family: 'Poppins', sans-serif;
+    font-weight: bold;
+    transition: .2s ease-in-out;
+}
+
+.btn-enviar:hover {
+    cursor: pointer;
+    background-color: white;
+    /* border: 3px solid var(--dourado); */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+#mensagem {
+    margin: 20px 0;
+    text-shadow: 0px 0px 10px gray;
+}
+
+.red-error {
+    color: var(--vermelho-erro);
+    font-weight: bold;
+}
+
+.green-sucess {
+    color: var(--verde-sucesso);
+    font-weight: bold;
+}
+
+footer {
+    background-color: var(--cinza-escuro);
+    color: var(--cinza-claro);
+    text-align: center;
+    padding: 10px;
+
+    & a {
+        color: var(--dourado);
+    }
+}
+
+
+/* CSS DO CONSULTAR.HTML */
+
+.consulta {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* background-color: black; */
+}
+
+.consulta .consultaForm {
+    width: 800px;
+    height: 100%;
+    margin: 70px 50px;
+
+    background: rgba(255, 255, 255, 0.3);
+    backdrop-filter: blur(8px);
+
+    border-radius: 15px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+    text-align: center;
+
+    & h2 {
+        margin: 20px;
+    }
+
+    & table {
+        margin: 10px;
+    }
+}
+
+.campoBusca {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#inputBusca {
+    width: 90%;
+    margin: 10px;
+    padding: 10px 20px;
+    border-radius: 15px;
+    border: none;
+}
+
+.btnBuscar {
+    padding: 10px 20px;
+    border-radius: 15px;
+    border: none;
+    transition: .2s ease-in-out;
+}
+
+.btnBuscar:hover {
+    cursor: pointer;
+    background-color: var(--dourado);
+}

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../static/css/style.css">
+    <title>Consultar - Hotel RS</title>
+</head>
+<body>
+    <div class="container">
+        
+        <nav>
+            <div class="cabecalho">
+                <a href="/" class="titulo_nav">🏨 Hotel RS</a>
+                <!-- <button type="button">
+                    <span></span>
+                </button> -->
+                <div id="navbarNav">
+                    <ul>
+                        <li>
+                            <a href="/">🏠 Cadastro</a>
+                        </li>
+                        <li>
+                            <a href="/alterar">✏️ Alterar</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        <div class="consulta">
+            <div class="consultaForm">
+                <h2>🔍 Consulta de Clientes</h2>
+
+                <!-- Campo de busca com botão -->
+                <div class="campoBusca">
+                    <input type="text" id="inputBusca" placeholder="Digite o nome do cliente">
+                    <button id="btnBuscar" class="btnBuscar">Buscar</button>
+                </div>
+
+                <table>
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Nome</th>
+                            <th>CPF</th>
+                            <th>Email</th>
+                            <th>Telefone</th>
+                            <th>Ações</th>
+                        </tr>
+                    </thead>
+                    <!-- 💡 O corpo da tabela será preenchido dinamicamente via JS -->
+                    <tbody id="tabelaResultados"></tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>Todos os direitos reservados. Desenvolvido por <a href="https://github.com/kauasanches" target="_blank">Kauã Sanches</a></p>
+    </footer>
+
+    <script src="assets/js/main.js"></script>
+</body>
+</html>
