@@ -48,9 +48,8 @@ document.addEventListener("DOMContentLoaded", function() {
                 // Caso algo dê errado (servidor fora do ar, etc...)
                 alert("Erro de comunicação com o servidor: " + erro)
             }
-    
+
             // Agora vamos mostrar os dados no Console
-            alert("JS carregou!")
             console.log("Dados capturados:");
             // Mostra o campo nome
             console.log("Nome: ", dados.nome);

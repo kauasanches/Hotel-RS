@@ -49,7 +49,6 @@ app = Flask(__name__, static_folder=STATIC_DIR, static_url_path="/static")
 # Pagina principal
 @app.route("/")
 def home():
-    # return "Bom dia galera 2B!"
     return send_from_directory(FRONTEND_DIR, "index.html")
 
 # Pagina de consulta
@@ -133,9 +132,14 @@ def cadastrar_cliente():
             201,
         )
     except Exception as e:
-        # Tratamento deerro genérico
+        # Tratamento de erro genérico
         return (
-            jsonify ({"status": "error", "message": f"Erro ao salvar no servidor: {e}"}),
+            jsonify(
+                {
+                "status": "error",
+                "message": f"Erro ao salvar no servidor: {e}"
+                }
+            ),
             500,
         )
 

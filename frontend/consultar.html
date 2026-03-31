@@ -27,19 +27,36 @@
                 </div>
             </div>
         </nav>
-    </div>
-
-    <div class="container">
+    
         <div class="consulta">
-            <form>
-                <input type="text" placeholder="Olá">
-                <button>Teste</button>
-            </form>
+            <div class="consultaForm">
+                <h2>🔍 Consulta de Clientes</h2>
+    
+                <!-- Campo de busca com botão -->
+                <div>
+                    <input type="text" id="campoBusca" placeholder="Digite o nome do cliente">
+                    <button id="btnBuscar">Buscar</button>
+                </div>
+    
+                <table>
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Nome</th>
+                            <th>CPF</th>
+                            <th></th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                </table>
+            </div>
         </div>
     </div>
 
     <footer>
         <p>Todos os direitos reservados. Desenvolvido por <a href="https://github.com/kauasanches" target="_blank">Kauã Sanches</a></p>
     </footer>
+
+    <script src="./assets/js/main.js"></script>
 </body>
 </html>
