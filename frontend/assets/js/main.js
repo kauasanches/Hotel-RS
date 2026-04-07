@@ -67,7 +67,28 @@ document.addEventListener("DOMContentLoaded", function() {
     if (btnBuscar) {
         btnBuscar.addEventListener("click", async () => {
             // Pega o nome digitado pelo usuário
-            const nome = document.getElementById("inputBusca").value;
+            const nome = document.getElementById("campoBusca").value;
+
+            // Fa uma requisição GET ao Flask, enviando o nome como parâmetro
+            const resp = await fetch(`/buscar?nome=${nome}`);
+            const clientes = await resp.json(); // Recebe a lista de clientes
+
+            const tabela = document.getElementById("tabelaResultados");
+            tabela.innerText = ""; // Limpa a tabela antes de mostrar os resultados
+
+            // Para cada cliete retornado, cria uma nova linha na tabela HTML
+            clientes.forEach(cli => {
+                const row = `
+                <tr>
+                    <td>${cli.ID}</td>
+                    <td>${cli.Nome}</td>
+                    <td>${cli.CPF}</td>
+                    <td>${cli.Email}</td>
+                    <td>${cli.Telefone}</td>
+                    <td><a href="/alterar?id=${cli.ID}" class="btn btn-sm btn-warning">Editar</a></td>
+                <tr>`;
+                tabela.innerHTML += row; // Adiciona a nova linha na tabela
+            })
         })
     }
 })
