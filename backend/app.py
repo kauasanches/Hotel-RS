@@ -143,6 +143,53 @@ def cadastrar_cliente():
             500,
         )
 
+# -------------------------------------------------------------------------------------------------
+# CONSULTAR CLIENTE PELO NOME
+# -------------------------------------------------------------------------------------------------
+
+@app.route("/buscar", methods=["GET"])
+def buscar_cliente():
+    """
+    Busca clientes pelo nome (não diferencia maiúsculas/minúsculas)
+    """
+    nome_query = request.args.get("nome", "").lower() # Nome pesquisado
+
+    try:
+        workbook = openpyxl.load_workbook(EXCEL_FILE) # Abre o arquivo Excel
+        sheet = workbook.active
+        resultados = [] # Lista para armazenar clientes encontrados
+
+        # Percorre as linhas do Excel (começando da linha 2, pulando os títulos)
+        for row in sheet.iter_rows(min_row=2, values_only=True):
+            cliente = dict(zip(COLUNAS, row)) # Cria um dicionário com os dados do cliente
+            nome_cliente = (cliente.get("Nome") or "").lower() # Nome do cliente em minúsculas
+
+            if nome_query in nome_cliente:
+                resultados.append(cliente)
+
+        return jsonify(resultados) # Retorna a lista de clientes encontrados
+    
+    except FileNotFoundError:
+        return (
+            jsonify(
+                {
+                    "status": "error",
+                    "message": "Arquivo de dados não encontrado."
+                }
+            ),
+            404,
+        )
+    except Exception as e:
+        return (
+            jsonify(
+                {
+                    "status": "error",
+                    "message": f"Erro ao ler os dados: {e}"
+                }
+            ),
+            500,    
+        )
+
 if __name__ == "__main__":
     print("Base: ", BASE_DIR)
     print("Front: ", FRONTEND_DIR)
