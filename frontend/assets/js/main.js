@@ -91,4 +91,31 @@ document.addEventListener("DOMContentLoaded", function() {
             })
         })
     }
+
+    // ------------------------------------------
+    // Envio das alterações ao servidor
+    // ------------------------------------------
+    formAlterar.addEventListener("submit", async (e) => {
+        e.preventDefault();
+
+        // Monta um objeto com os dados digitados
+        const dados = {
+            nome: nome.value,
+            cpf: cpf.value,
+            email: email.value,
+            telefone: telefone.value,
+            endereco: endereco.value,
+            observacoes: observacoes.value
+        };
+
+        // Envia para o backend (rota /api/atualizar/<id>)
+        const resp = await fetch(`/api/atualizar/${id}`, {
+            method: 'POST',
+            header: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(dados)
+        });
+
+        const result = await resp.json();
+        mensagem.innerHTML = result.message; // Mostra o retorno na tela
+    })
 })
