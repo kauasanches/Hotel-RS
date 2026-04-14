@@ -111,51 +111,22 @@ body::before {
     height: 100%;
     margin: 70px 50px;
 
-    /* background: rgba(255, 255, 255, 0.3); */
+    background: rgba(255, 255, 255, 0.2);
     backdrop-filter: blur(8px);
 
     border-radius: 15px;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.271);
     text-align: center;
-}
 
-/* .container-form {
-    margin: 15px 0px;
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    
     & h1 {
-        margin-top: 10px;
-        margin: 20px;
-        color: var(--bege-claro);
+        margin-top: 15px;
     }
-    
-    & input {
-        margin: 25px;
-        border: none;
-        border-radius: 5px;
-        padding: 10px;
-        transition: .2s ease-in-out;
-    }
-    
-    & input::placeholder {
-        font-size: 15px;
-    }
-    
-    & input:focus {
-        outline: none;
-        border-bottom: 2px solid var(--dourado);
-        box-shadow: 0 2px 0 var(--dourado);
-    }
-    
-} */
+}
 
 /* Container que segura os campos */
 .grid-container {
     display: grid;
-    /* Cria 3 colunas de tamanhos iguais */
-    grid-template-columns: repeat(3, 1fr); 
+    grid-template-columns: repeat(3, 1fr); /* Cria 3 colunas de tamanhos iguais */
     gap: 20px; /* Espaço entre os campos */
     padding: 20px;
     text-align: left;
@@ -176,10 +147,21 @@ body::before {
 .input-group input, 
 .input-group textarea {
     padding: 10px;
-    border: 1px solid #ccc;
+    /* border: 1px solid #ccc; */
     border-radius: 5px;
     width: 100%; /* Faz o input ocupar toda a largura da coluna */
     box-sizing: border-box; /* Garante que o padding não quebre a largura */
+    box-shadow: 0px 0px 10px rgb(0, 0, 0, 0.3);
+}
+
+.input-group input {
+    border: 2px solid rgba(159, 159, 159, 0.164);
+    transition: all 0.2s ease-in-out;
+}
+
+.input-group input:focus {
+    border-color: var(--dourado);
+    outline: none;
 }
 
 /* Ajuste para o Textarea não ficar pequeno demais */
@@ -188,15 +170,8 @@ body::before {
     resize: vertical;
 }
 
-/* Responsividade: Para telas de celular, vira 1 coluna só */
-@media (max-width: 768px) {
-    .grid-container {
-        grid-template-columns: 1fr;
-    }
-}
-
 .btn-enviar {
-    border-radius: 5px;
+    border-radius: 15px;
     border: none;
     padding: 10px 20px;
     display: block;
@@ -212,7 +187,8 @@ body::before {
     cursor: pointer;
     background-color: white;
     /* border: 3px solid var(--dourado); */
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+    transform: scale(1.03);
 }
 
 #mensagem {
@@ -231,7 +207,7 @@ body::before {
 }
 
 footer {
-    background-color: var(--cinza-escuro);
+    background-color: var(--azul-marinho);
     color: var(--cinza-claro);
     text-align: center;
     padding: 10px;
@@ -291,10 +267,54 @@ footer {
     padding: 10px 20px;
     border-radius: 15px;
     border: none;
+    display: block;
+    background-color: var(--dourado);
+    font-family: 'Poppins', sans-serif;
+    font-weight: bold;
     transition: .2s ease-in-out;
 }
 
 .btnBuscar:hover {
     cursor: pointer;
-    background-color: var(--dourado);
+    background-color: white;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+    transform: scale(1.03);
+}
+
+.ctn-clientes {
+    margin-bottom: 15px;
+
+    & .btn-sm {
+        background-color: var(--dourado);
+        padding: 5px 10px;
+        border-radius: 10px;
+        color: var(--cinza-escuro);
+        text-decoration: none;
+    }
+}
+
+/* No seletor da tabela dentro de .consultaForm */
+.consulta .consultaForm table {
+    width: 95%; /* Ajuste para não colar nas bordas */
+    margin: 20px auto;
+    border-collapse: separate; /* Permite o espaçamento entre células */
+    border-spacing: 0 5px;    /* 0 na horizontal, 5px na vertical */
+}
+
+.consulta .consultaForm table tbody tr {
+    background: rgba(255, 255, 255, 0.3); /* Fundo leve para cada linha */
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1); /* Sombra para dar profundidade */
+}
+
+.consulta .consultaForm table th, 
+.consulta .consultaForm table td {
+    padding: 10px 10px;
+    text-align: center;
+}
+
+/* Responsividade: Para telas de celular, vira 1 coluna só */
+@media (max-width: 768px) {
+    .grid-container {
+        grid-template-columns: 1fr;
+    }
 }

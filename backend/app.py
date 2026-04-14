@@ -187,7 +187,47 @@ def buscar_cliente():
                     "message": f"Erro ao ler os dados: {e}"
                 }
             ),
-            500,    
+            500,
+        )
+
+# -------------------------------------------------------------------------------------------------
+# CONSULTAR CLIENTE PELO NOME
+# -------------------------------------------------------------------------------------------------
+
+@app.route("/cliente/<int:cliente_id>", methods=["GET"])
+def get_cliente(cliente_id):
+    """
+    Retorna os dados completos de um cliente pelo seu ID
+    """
+    try:
+        workbook = openpyxl.load_workbook(EXCEL_FILE) # Abre o arquivo Excel
+        sheet = workbook.active
+
+        # Procura o cliente linha por linha
+        for row_idx in range(2, sheet.max_row + 1):
+            row_id = sheet.cell(row=row_idx, column=1).value
+            if row_id == cliente_id:
+                row_values = [cell.value for cell in sheet[row_idx]]
+                cliente = dict(zip(COLUNAS, row_values))
+                return jsonify(cliente)
+
+        # Se não encontrar o cliente
+        return jsonify(
+            {
+                "status": "error",
+                "message": "Cliente não encontrado."
+            }
+        )
+
+    except Exception as e:
+        return (
+            jsonify(
+                {
+                    "status": "error",
+                    "message": f"Erro ao buscar clientes: {e}"
+                }
+            ),
+            500,
         )
 
 if __name__ == "__main__":

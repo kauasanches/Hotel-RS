@@ -1,6 +1,6 @@
 // Espera quando o HTML carregar completamente antes de executar o JavaScript
 document.addEventListener("DOMContentLoaded", function() {
-    alert("JS carregou!")
+    // alert("JS carregou!")
 
     // Aqui estamos pegando o formulário pelo ID
     const formCadastro = document.getElementById("formCadastro");
@@ -46,7 +46,7 @@ document.addEventListener("DOMContentLoaded", function() {
             }
             catch (erro) {
                 // Caso algo dê errado (servidor fora do ar, etc...)
-                alert("Erro de comunicação com o servidor: " + erro)
+                    ("Erro de comunicação com o servidor: " + erro)
             }
 
             // Agora vamos mostrar os dados no Console
@@ -79,7 +79,7 @@ document.addEventListener("DOMContentLoaded", function() {
             // Para cada cliete retornado, cria uma nova linha na tabela HTML
             clientes.forEach(cli => {
                 const row = `
-                <tr>
+                <tr class="ctn-clientes">
                     <td>${cli.ID}</td>
                     <td>${cli.Nome}</td>
                     <td>${cli.CPF}</td>
