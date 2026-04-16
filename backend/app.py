@@ -230,11 +230,79 @@ def get_cliente(cliente_id):
             500,
         )
 
+# -------------------------------------------------------------------------------------------------
+# CONSULTAR CLIENTE PELO NOME
+# -------------------------------------------------------------------------------------------------
+
+@app.route("/api/alterar/<int:cliente_id>", methods=["POST"])
+def alterar_cliente(cliente_id):
+    """
+    Recebe os dados atualizados de um cliente e salva as alterações
+    """
+    try:
+        data = request.json # Dados enviados do frontend via POST (JSON)
+
+        workbook = openpyxl.load_workbook(EXCEL_FILE) # Abre o arquivo Excel
+        sheet = workbook.active
+
+        # Comecamos com -1 para indicar que, por enquanto, nao o encontramos
+        row_to_update = -1
+
+        # O sistema comeca a let da linha 2 (pulando os titulos) ate a ultima linha
+        for row_idx in range(2, sheet.max_row + 1):
+            # Se o valor da primeira coluna (ID) for igual ao id que recebemos (cliente_id), achamos!
+            if sheet.cell(row=row_idx, column=1).value == cliente_id:
+                row_to_update = row_idx
+                break
+
+        # Se depois de ler tudo, continuarmos com -1, o hospede nao existe
+        if row_to_update == -1:
+            return (
+                jsonify(
+                    {
+                        "status": "error",
+                        "message": "Cliente não encontrado."
+                    }
+                ),
+                404, # Codigo de erro padrao para "Nao Encontrado"
+            )
+
+        # coluna 2 = Nome, coluna 3 = CPF, coluna 4 = Email, coluna 5 = Telefone, coluna 6 = Endereco, coluna 7 = Observacoes
+        sheet.cell(row=row_to_update, column=2).value = data.get("nome") # Nome
+        sheet.cell(row=row_to_update, column=3).value = data.get("cpf") # CPF
+        sheet.cell(row=row_to_update, column=4).value = data.get("email") # Email
+        sheet.cell(row=row_to_update, column=5).value = data.get("telefone") # Telefone
+        sheet.cell(row=row_to_update, column=6).value = data.get("endereco") # Endereco
+        sheet.cell(row=row_to_update, column=7).value = data.get("observacoes") # Observacoes
+
+        # IMPORTANTE: Sempre que fizer alterações no Excel, é necessário salvar o arquivo para que as mudanças sejam efetivadas
+        workbook.save(EXCEL_FILE)
+
+        # Retorna mensagem de sucesso para o front-end mostrar na tela do usuario
+        return jsonify(
+            {
+                "status": "success",
+                "message": "Dados do cliente atualizado com sucesso!"
+            }
+        )
+    
+    except Exception as e:
+        # Se houver algum erro inesperado (ex: o arquivo e=Excel estar aberto por outro programa)
+        return (
+            jsonify(
+                {
+                    "status": "error",
+                    "message": f"Erro ao atualizar os dados: {e}"
+                }
+            ),
+            500, # Codigo de erro para "Erro Interno do Servidor"
+        )
+
 if __name__ == "__main__":
-    print("Base: ", BASE_DIR)
-    print("Front: ", FRONTEND_DIR)
-    print("Static:", STATIC_DIR)
-    print("Excel:", EXCEL_FILE)
-    print("JS:", JS_FILE)
+    # print("Base: ", BASE_DIR)
+    # print("Front: ", FRONTEND_DIR)
+    # print("Static:", STATIC_DIR)
+    # print("Excel:", EXCEL_FILE)
+    # print("JS:", JS_FILE)
     init_excel()
-    app.run(debug=True)
+    app.run(debug=False)

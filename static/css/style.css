@@ -168,6 +168,11 @@ body::before {
     outline: none;
 }
 
+.input-group textarea:focus {
+    border-color: var(--dourado);
+    outline: none;
+}
+
 /* Ajuste para o Textarea não ficar pequeno demais */
 .input-group textarea {
     height: 38px; /* Mesma altura dos inputs para alinhar */

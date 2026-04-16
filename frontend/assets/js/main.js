@@ -117,5 +117,5 @@ document.addEventListener("DOMContentLoaded", function() {
 
         const result = await resp.json();
         mensagem.innerHTML = result.message; // Mostra o retorno na tela
-    })
+    });
 })
