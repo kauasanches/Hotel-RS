@@ -97,7 +97,7 @@ document.addEventListener("DOMContentLoaded", function() {
     // ==================================================
 
     // Essa parte roda na pagina alterar.html
-    const formAlterar = document.getElementById("formAlterar");
+    const formAlterar = document.getElementById('formAlterar');
 
     if(formAlterar) {
         // Captura o ID do cliente a partir da URL (ex: /alterar?id=3)
@@ -116,8 +116,8 @@ document.addEventListener("DOMContentLoaded", function() {
                 document.getElementById('clienteId').value = cli.ID;
                 document.getElementById('nome').value = cli.Nome;
                 document.getElementById('cpf').value = cli.CPF;
-                document.getElementById('telefone').value = cli.Telefone;
                 document.getElementById('email').value = cli.Email;
+                document.getElementById('telefone').value = cli.Telefone;
                 document.getElementById('endereco').value = cli.Endereco;
                 document.getElementById('obs').value = cli.Observações;
             });
@@ -142,7 +142,7 @@ document.addEventListener("DOMContentLoaded", function() {
             console.log(dados); // Mostra os dados no console para conferência
 
             // Envia para o backend (rota /api/atualizar/<id>)
-            const resp = await fetch(`/api/atualizar/${id}`, {
+            const resp = await fetch(`/api/alterar/${id}`, {
                 method: 'POST',
                 header: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(dados)

@@ -113,7 +113,7 @@ def cadastrar_cliente():
             data.get("email"),
             data.get("telefone"),
             data.get("endereco"),
-            data.get("observacoes", ""), # Campo opcional
+            data.get("obs", ""), # Campo opcional
             datetime.now().strftime("%Y-%m-%d") # Data atual
         ]
 
@@ -273,7 +273,7 @@ def alterar_cliente(cliente_id):
         sheet.cell(row=row_to_update, column=4).value = data.get("email") # Email
         sheet.cell(row=row_to_update, column=5).value = data.get("telefone") # Telefone
         sheet.cell(row=row_to_update, column=6).value = data.get("endereco") # Endereco
-        sheet.cell(row=row_to_update, column=7).value = data.get("observacoes") # Observacoes
+        sheet.cell(row=row_to_update, column=7).value = data.get("obs") # Observacoes
 
         # IMPORTANTE: Sempre que fizer alterações no Excel, é necessário salvar o arquivo para que as mudanças sejam efetivadas
         workbook.save(EXCEL_FILE)
