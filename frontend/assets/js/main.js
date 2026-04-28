@@ -9,7 +9,7 @@ document.addEventListener("DOMContentLoaded", function() {
         formCadastro.addEventListener("submit", async (e) => {
             // Bloqueia o recarregamento padrão
             e.preventDefault();
-    
+
             // Cria um objeto completo com todos os dados
             // 1) new FormData(formCadastro) -> pega todos os campos do formulário
             // 2) Object.fromEntries -> tranformas os dados em um objeto
@@ -92,30 +92,64 @@ document.addEventListener("DOMContentLoaded", function() {
         })
     }
 
-    // ------------------------------------------
-    // Envio das alterações ao servidor
-    // ------------------------------------------
-    formAlterar.addEventListener("submit", async (e) => {
-        e.preventDefault();
+    // ==================================================
+    // ALTERAR CLIENTE
+    // ==================================================
 
-        // Monta um objeto com os dados digitados
-        const dados = {
-            nome: nome.value,
-            cpf: cpf.value,
-            email: email.value,
-            telefone: telefone.value,
-            endereco: endereco.value,
-            observacoes: observacoes.value
-        };
+    // Essa parte roda na pagina alterar.html
+    const formAlterar = document.getElementById("formAlterar");
 
-        // Envia para o backend (rota /api/atualizar/<id>)
-        const resp = await fetch(`/api/atualizar/${id}`, {
-            method: 'POST',
-            header: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(dados)
+    if(formAlterar) {
+        // Captura o ID do cliente a partir da URL (ex: /alterar?id=3)
+        const urlParams = new URLSearchParams(window.location.search);
+        const id = urlParams.get("id"); // Pega o valor do parâmetro "id"
+
+        const mensagem = document.getElementById('mensagem');
+
+        // --------------------------------------------------
+        // Ao carregar a pagina, busca os dados do cliete no backend
+        // --------------------------------------------------
+        fetch(`/api/cliente/${id}`)
+            .then(r => r.json())
+            .then(cli => {
+                //Preenche automaticamente os campos do formulario
+                document.getElementById('clienteId').value = cli.ID;
+                document.getElementById('nome').value = cli.Nome;
+                document.getElementById('cpf').value = cli.CPF;
+                document.getElementById('telefone').value = cli.Telefone;
+                document.getElementById('email').value = cli.Email;
+                document.getElementById('endereco').value = cli.Endereco;
+                document.getElementById('obs').value = cli.Observações;
+            });
+
+        // ------------------------------------------
+        // Envio das alterações ao servidor
+        // ------------------------------------------
+
+        formAlterar.addEventListener("submit", async (e) => {
+            e.preventDefault();
+            
+            // Monta um objeto com os dados digitados
+            const dados = {
+                nome: nome.value,
+                cpf: cpf.value,
+                telefone: telefone.value,
+                email: email.value,
+                endereco: endereco.value,
+                observacoes: obs.value
+            };
+
+            console.log(dados); // Mostra os dados no console para conferência
+
+            // Envia para o backend (rota /api/atualizar/<id>)
+            const resp = await fetch(`/api/atualizar/${id}`, {
+                method: 'POST',
+                header: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(dados)
+            });
+
+            const result = await resp.json();
+            mensagem.innerHTML = result.message; // Mostra o retorno na tela
         });
-
-        const result = await resp.json();
-        mensagem.innerHTML = result.message; // Mostra o retorno na tela
-    });
-})
+    };
+});

@@ -191,10 +191,10 @@ def buscar_cliente():
         )
 
 # -------------------------------------------------------------------------------------------------
-# CONSULTAR CLIENTE PELO NOME
+# CONSULTAR CLIENTE PELO ID
 # -------------------------------------------------------------------------------------------------
 
-@app.route("/cliente/<int:cliente_id>", methods=["GET"])
+@app.route("/api/cliente/<int:cliente_id>", methods=["GET"])
 def get_cliente(cliente_id):
     """
     Retorna os dados completos de um cliente pelo seu ID
@@ -231,7 +231,7 @@ def get_cliente(cliente_id):
         )
 
 # -------------------------------------------------------------------------------------------------
-# CONSULTAR CLIENTE PELO NOME
+# ALTERAR OS DADOS DO CLIENTE
 # -------------------------------------------------------------------------------------------------
 
 @app.route("/api/alterar/<int:cliente_id>", methods=["POST"])
