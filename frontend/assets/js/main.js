@@ -85,6 +85,7 @@ document.addEventListener("DOMContentLoaded", function() {
                     <td>${cli.CPF}</td>
                     <td>${cli.Email}</td>
                     <td>${cli.Telefone}</td>
+                    <td>${cli.Observações}</td>
                     <td><a href="/alterar?id=${cli.ID}" class="btn btn-sm btn-warning">Editar</a></td>
                 <tr>`;
                 tabela.innerHTML += row; // Adiciona a nova linha na tabela
