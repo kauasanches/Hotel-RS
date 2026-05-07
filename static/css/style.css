@@ -1,337 +1,160 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Archivo+Black&display=swap');
+/* =========================================================================
+🎨 STYLE.CSS
+💡 Tema visual do site "Hotel Caribe Azul"
+---------------------------------------------------------------------------
+📘 OBJETIVO:
+Este arquivo define todas as cores, tamanhos, fontes e estilos visuais
+utilizados nas páginas HTML do projeto. 
+O design é limpo, tropical e fácil de compreender por iniciantes.
+========================================================================= */
 
-:root {
-    /* Cor principal: */
-    --azul-marinho: #003366; /* Uma cor sóbria e clássica que transmite confiança, tranquilidade e profissionalismo. Ideal para o branding e como cor base do site. */
-
-    /* Cores secundarias: */
-    --dourado: #FFD700; /* Para detalhes que tragam uma sensação de luxo e sofisticação, como botões, bordas e chamadas para ação. */
-    --cinza-claro: #d3d3d3; /* Uma cor neutra e elegante para fundos e seções que precisam de suavidade, sem tirar o destaque das outras cores. */
-
-    /* Cor de texto: */
-    --cinza-escuro: #333333; /* Essencial para dar clareza, facilitar a leitura e criar contraste com as cores mais escuras. */
-
-    /* Cores de apoio: */
-    --bege-claro: #f5f5dc; /* Uma cor suave e aconchegante para dar uma sensação de acolhimento, ideal para fundos ou áreas com informações mais detalhadas. */
-
-    /* Cores de destaque: */
-    --turquesa-claro: #40e0d0; /* Uma cor vibrante que pode ser usada para destacar botões de ação (ex: "Reservar agora") ou links importantes. */
-    --vermelho-escuro: #8b0000; /* Para criar contraste e destacar elementos urgentes ou promoções. */
-    
-    /* Cores de condições */
-    --verde-sucesso: #28a745; /* É o tom mais comum em frameworks como Bootstrap. Passa confiança e é muito legível. */
-    --vermelho-erro: #dc3545; /* Este é o par perfeito para o verde. É o tom clássico de erro. */
-
-    /*
-    Fundo do site: Branco ou Bege Claro.
-    Cabeçalho e rodapé: Azul Marinho com textos em Branco ou Cinza Claro.
-    Botões e elementos interativos: Dourado ou Turquesa Claro.
-    Textos principais e descrições: Cinza Escuro.
-    */
-}
-
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-html, body {
-    height: 100%;
-    margin: 0;
-}
-
+/* =========================================================================
+🌈 ESTILO GERAL DO SITE
+========================================================================= */
 body {
-    display: flex;
-    flex-direction: column;
-    background-color: var(--bege-claro);
-    color: var(--cinza-escuro);
-    font-family: 'Poppins', sans-serif;
-    background: url('../assets/img/fundo4.jpg') center center fixed no-repeat;
-    background-size: cover;
+    /* 💡 Fundo com degradê em tons de azul turquesa e azul escuro */
+    background: linear-gradient(135deg, #00c2c7, #0077b6);
+
+    /* 🎨 Cor padrão do texto: preto */
+    color: #000;
+
+    /* 🧠 Fonte limpa e moderna (sem serifa), compatível com todos os sistemas */
+    font-family: 'Segoe UI', Tahoma, sans-serif;
 }
 
-input {
-    font-size: 14px;
+/* =========================================================================
+🖼️ CAROUSEL (BANNER SUPERIOR)
+========================================================================= */
+.carousel img {
+    /* ⚙️ Altura fixa para deixar o banner uniforme */
+    height: 250px;
+
+    /* 💡 Garante que a imagem preencha o espaço sem distorcer */
+    object-fit: cover;
 }
 
-body::before {
-    content: "";
-    position: fixed;
-    inset: 0;
-    background: rgba(0, 0, 0, 0.4);
-    z-index: -1;
-}
+/* =========================================================================
+🧾 FORMULÁRIOS (CAIXAS DE CADASTRO E ALTERAÇÃO)
+========================================================================= */
+form {
+    /* 💡 Fundo branco com transparência para combinar com o degradê azul */
+    background-color: #ffffffcc;
 
-.container {
-    flex: 1;
-}
-
-.cabecalho {
-    background-color: var(--azul-marinho);
-    color: var(--cinza-claro);
-    padding: 15px;
-    display: flex;
-    justify-content: space-between;
-
-    & .titulo_nav {
-        font-family: "Archivo Black", sans-serif;
-        font-size: 24px;
-    }
-
-    & a {
-        color: var(--dourado);
-        text-decoration: none;
-        transition: .1s ease-in-out;
-    }
-
-    & a:hover {
-        /* text-decoration: underline; */
-        text-shadow: 0 0 5px black;
-    }
-
-    & #navbarNav ul {
-        display: flex;
-        justify-content: flex-end;
-        list-style-type: none;
-        padding: 0;
-    }
-
-    & #navbarNav ul li {
-        margin: 0 15px;
-    }
-}
-
-.hero {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    margin: 0 30px;
-    text-align: center;
-}
-
-.formulario {
-    flex: 1;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.formulario form {
-    width: 800px;
-    height: 100%;
-    margin: 70px 50px;
-
-    background: rgba(255, 255, 255, 0.3);
-    backdrop-filter: blur(8px);
-
+    /* 🎨 Bordas arredondadas para visual mais suave */
     border-radius: 15px;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.271);
-    text-align: center;
-
-    & h1 {
-        margin-top: 15px;
-    }
 }
 
-/* Container que segura os campos */
-.grid-container {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr); /* Cria 3 colunas de tamanhos iguais */
-    gap: 20px; /* Espaço entre os campos */
-    padding: 20px;
-    text-align: left;
+/* =========================================================================
+🔘 BOTÕES PRINCIPAIS
+========================================================================= */
+.btn-primary {
+    /* 🌊 Cor de fundo azul principal */
+    background-color: #0077b6;
+
+    /* 🎨 Cor da borda (ligeiramente mais escura) */
+    border-color: #005f8a;
 }
 
-/* Organização de cada rótulo e input */
-.input-group {
-    display: flex;
-    flex-direction: column; /* Coloca o label acima do input */
+/* 💡 Efeito visual quando o usuário passa o mouse sobre o botão */
+.btn-primary:hover {
+    /* 🌈 Cor muda para azul-turquesa mais claro */
+    background-color: #00c2c7;
+
+    /* ⚙️ Borda acompanha o tom do fundo */
+    border-color: #0077b6;
 }
 
-.input-group label {
-    margin-bottom: 5px;
-    font-weight: bold;
-    color: #333;
-}
-
-.input-group input, 
-.input-group textarea {
-    padding: 10px;
-    /* border: 1px solid #ccc; */
-    border-radius: 5px;
-    width: 100%; /* Faz o input ocupar toda a largura da coluna */
-    box-sizing: border-box; /* Garante que o padding não quebre a largura */
-    box-shadow: 0px 0px 10px rgb(0, 0, 0, 0.3);
-}
-
-.input-group input {
-    border: 2px solid rgba(159, 159, 159, 0.164);
-    transition: all 0.2s ease-in-out;
-}
-
-.input-group input:focus {
-    border-color: var(--dourado);
-    outline: none;
-}
-
-.input-group textarea:focus {
-    border-color: var(--dourado);
-    outline: none;
-}
-
-/* Ajuste para o Textarea não ficar pequeno demais */
-.input-group textarea {
-    height: 38px; /* Mesma altura dos inputs para alinhar */
-    resize: vertical;
-}
-
-.btn-enviar {
-    border-radius: 15px;
-    border: none;
-    padding: 10px 20px;
-    display: block;
-    margin: 30px auto;
-    background-color: var(--dourado);
-    font-size: 20px;
-    font-family: 'Poppins', sans-serif;
-    font-weight: bold;
-    transition: .2s ease-in-out;
-}
-
-.btn-enviar:hover {
-    cursor: pointer;
-    background-color: white;
-    /* border: 3px solid var(--dourado); */
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
-    transform: scale(1.03);
-}
-
-#mensagem {
-    margin: 20px 0;
-    text-shadow: 0px 0px 10px gray;
-}
-
-.red-error {
-    color: var(--vermelho-erro);
-    font-weight: bold;
-}
-
-.green-sucess {
-    color: var(--verde-sucesso);
-    font-weight: bold;
-}
-
+/* =========================================================================
+🦶 RODAPÉ
+========================================================================= */
 footer {
-    background-color: var(--azul-marinho);
-    color: var(--cinza-claro);
-    text-align: center;
-    padding: 10px;
-
-    & a {
-        color: var(--dourado);
-    }
+    /* ⚫ Fundo preto com letras brancas */
+    background-color: #000;
+    color: #fff;
 }
 
-
-/* CSS DO CONSULTAR.HTML */
-
-.consulta {
-    flex: 1;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    /* background-color: black; */
+/* =========================================================================
+❄️ EFEITO DE NEVE
+---------------------------------------------------------------------------
+💡 O canvas (criado por JavaScript) cobre a tela e exibe partículas de neve
+animadas que se movem conforme o mouse. 
+========================================================================= */
+#snowCanvas {
+    position: fixed;
+    /* Fica fixo no topo da tela */
+    top: 0;
+    left: 0;
+    pointer-events: none;
+    /* ❌ Não bloqueia cliques nos botões e links */
+    z-index: 9999;
+    /* 🔝 Fica acima de todos os elementos visuais */
 }
 
-.consulta .consultaForm {
-    width: 800px;
-    height: 100%;
-    margin: 70px 50px;
+/* =========================================================================
+🌊 ESTILO DO MENU SUPERIOR (NAVBAR)
+💡 Presente nas páginas: index.html, consulta.html, alterar.html
+========================================================================= */
 
-    background: rgba(255, 255, 255, 0.3);
-    backdrop-filter: blur(8px);
-
-    border-radius: 15px;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
-    text-align: center;
-
-    & h2 {
-        margin: 20px;
-    }
-
-    & table {
-        margin: 10px;
-    }
+/* Fundo do menu com degradê azul e sombra sutil */
+.bg-gradient {
+    background: linear-gradient(90deg, #006d77, #00b4d8);
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3);
 }
 
-.areaBusca {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-#campoBusca {
-    width: 90%;
-    margin: 10px;
-    padding: 10px 20px;
-    border-radius: 10px;
-    border: none;
-}
-
-.btnBuscar {
-    padding: 10px 20px;
-    border-radius: 15px;
-    border: none;
-    display: block;
-    background-color: var(--dourado);
+/* =========================================================================
+🏨 LOGO / NOME DO SITE (Hotel Caribe Azul)
+========================================================================= */
+.navbar-brand {
+    /* 💡 Fonte personalizada para destacar o nome do hotel */
     font-family: 'Poppins', sans-serif;
-    font-weight: bold;
-    transition: .2s ease-in-out;
+
+    /* ✏️ Tamanho maior para dar destaque */
+    font-size: 1.5rem;
+
+    /* 📏 Espaçamento entre letras */
+    letter-spacing: 1px;
+
+    /* 🌟 Pequena sombra no texto para dar contraste sobre o fundo azul */
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.4);
 }
 
-.btnBuscar:hover {
-    cursor: pointer;
-    background-color: white;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
-    transform: scale(1.03);
+/* =========================================================================
+🔗 LINKS DO MENU (Cadastro | Consulta | Alterar)
+========================================================================= */
+.nav-link {
+    /* 🧱 Tamanho levemente maior que o padrão */
+    font-size: 1.1rem;
+
+    /* ⚙️ Espaçamento lateral entre os links */
+    margin: 0 10px;
+
+    /* 💡 Transição suave quando o mouse passa sobre o link */
+    transition: 0.3s;
 }
 
-.ctn-clientes {
-    margin-bottom: 15px;
+/* 💡 Efeito ao passar o mouse sobre os links do menu */
+.nav-link:hover {
+    /* 🌟 Cor do texto muda para um branco amarelado */
+    color: #fffae6 !important;
 
-    & .btn-sm {
-        background-color: var(--dourado);
-        padding: 5px 10px;
-        border-radius: 10px;
-        color: var(--cinza-escuro);
-        text-decoration: none;
-    }
+    /* ✨ Efeito de brilho suave ao redor do texto */
+    text-shadow: 0px 0px 6px rgba(255, 255, 255, 0.7);
 }
 
-/* No seletor da tabela dentro de .consultaForm */
-.consulta .consultaForm table {
-    width: 95%; /* Ajuste para não colar nas bordas */
-    margin: 20px auto;
-    border-collapse: separate; /* Permite o espaçamento entre células */
-    border-spacing: 0 5px;    /* 0 na horizontal, 5px na vertical */
-}
+/* =========================================================================
+📌 CONFIGURAÇÃO GERAL DA NAVBAR
+========================================================================= */
+.navbar {
+    /* 🧭 Fica sempre visível no topo da página, mesmo ao rolar */
+    position: sticky;
+    top: 0;
 
-.consulta .consultaForm table tbody tr {
-    background: rgba(255, 255, 255, 0.3); /* Fundo leve para cada linha */
-    box-shadow: 0 4px 6px rgba(0,0,0,0.1); /* Sombra para dar profundidade */
-}
+    /* 🔝 Prioridade sobre outros elementos */
+    z-index: 1000;
 
-.consulta .consultaForm table th, 
-.consulta .consultaForm table td {
-    padding: 10px 10px;
-    text-align: center;
-}
+    /* 💨 Leve transparência no menu */
+    opacity: 0.95;
 
-/* Responsividade: Para telas de celular, vira 1 coluna só */
-@media (max-width: 768px) {
-    .grid-container {
-        grid-template-columns: 1fr;
-    }
+    /* 🌫️ Efeito de desfoque no fundo (vidro fosco) */
+    backdrop-filter: blur(6px);
 }
