@@ -1,103 +1,96 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-<!-- =============================================================================
-🏨 HOTEL CARIBE AZUL - PÁGINA DE CONSULTA DE CLIENTES
-💡 Objetivo: permitir que o usuário procure clientes cadastrados no sistema.
-📘 O backend Flask retorna os dados do Excel (.xlsx) e o JS exibe tudo em tabela.
-🎓 Feito para demonstrar integração front-end (HTML + JS) com back-end (Python Flask)
-============================================================================= -->
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Consulta de Clientes</title>
-
-    <!-- 🎨 Bootstrap: biblioteca de estilo pronta e responsiva 
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
--->
-    <!-- 🎨 CSS personalizado do projeto -->
-    <link rel="stylesheet" href="../static/css/style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hotel RS — Consultar Hóspedes</title>
+  <link rel="stylesheet" href="/static/css/style.css" />
 </head>
-
 <body>
-    <!-- =============================================================================
-    🔹 MENU SUPERIOR (NAVBAR)
-    -----------------------------------------------------------------------------
-    💡 O mesmo menu é usado em todas as páginas (Cadastro, Consulta, Alteração).
-        Ele facilita a navegação entre as rotas Flask:
-        ➜ "/" → Página de Cadastro
-        ➜ "/consulta" → Página de Consulta
-    ============================================================================= -->
-    <nav>
-        <div>
-            <!-- 🏨 Nome/logo do hotel -->
-            <a href="/">🏨 Hotel RS</a>
 
-            <!-- 📱 Botão do menu em telas pequenas -->
-            <button type="button">
-                <span></span>
-            </button>
-
-            <!-- 🧭 Itens do menu -->
-            <div id="navbarNav">
-                <ul>
-                    <li>
-                        <a href="/">🏠 Cadastro</a>
-                    </li>
-                    <li>
-                        <!-- Página atual -->
-                        <a href="/consulta">🔍 Consultar</a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </nav>
-
-    <!-- =============================================================================
-    📋 ÁREA PRINCIPAL - CONSULTA DE CLIENTES
-    -----------------------------------------------------------------------------
-    💡 Aqui o aluno poderá digitar um nome e buscar os clientes cadastrados.
-    ⚙️ O JavaScript (main.js) envia uma requisição GET para:
-        ➜ /api/buscar?nome=Fulano
-    O backend Flask responde com os dados filtrados do arquivo Excel.
-    ============================================================================= -->
+  <!-- NAVBAR -->
+  <nav role="navigation" aria-label="Navegação principal">
     <div>
-        <h2>🔍 Consulta de Clientes</h2>
+      <a href="/" class="nav-brand">
+        <span class="nav-brand-icon">
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path d="M2 22h20V2L2 22zm18-2H6.5L20 6.5V20z"/>
+            <path d="M4 22l2-2h14l2 2H4z" opacity="0.5"/>
+          </svg>
+        </span>
+        Hotel RS
+      </a>
 
-        <!-- 🧠 Campo de busca com botão -->
-        <div>
-            <input type="text" id="campoBusca" placeholder="Digite o nome do cliente">
-            <button id="btnBuscar">Buscar</button>
-        </div>
+      <button class="nav-toggle" id="navToggle" aria-label="Abrir menu">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M3 12h18M3 6h18M3 18h18"/>
+        </svg>
+      </button>
 
-        <!-- 🧾 Tabela de resultados -->
-        <table>
-            <thead>
-                <tr>
-                    <th>ID</th>
-                    <th>Nome</th>
-                    <th>CPF</th>
-                    <th>Email</th>
-                    <th>Telefone</th>
-                    <th>Ações</th>
-                </tr>
-            </thead>
-            <!-- 💡 O corpo da tabela será preenchido dinamicamente via JS -->
-            <tbody id="tabelaResultados"></tbody>
-        </table>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="/">
+          <svg viewBox="0 0 24 24"><path d="M5 13.18v4L12 21l7-3.82v-4L12 17l-7-3.82zM12 3L1 9l11 6 9-4.91V17h2V9L12 3z"/></svg>
+          Cadastro
+        </a></li>
+        <li><a href="/consulta" class="active">
+          <svg viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg>
+          Consultar
+        </a></li>
+      </ul>
     </div>
+  </nav>
 
-    <!-- =============================================================================
-    ⚙️ SCRIPTS JAVASCRIPT
-    -----------------------------------------------------------------------------
-    💡 main.js → responsável por:
-       - Fazer a busca dos clientes no servidor Flask (/api/buscar)
-       - Preencher automaticamente a tabela
-       - Adicionar botão "Editar" em cada linha
-    
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    ============================================================================= -->
-    <script src="assets/js/main.js"></script>
+  <!-- PAGE HEADER -->
+  <header class="page-header">
+    <h1>Consultar Hóspedes</h1>
+    <p>Busque por nome para encontrar os dados cadastrados.</p>
+  </header>
+
+  <!-- SEARCH SECTION -->
+  <main class="container">
+    <section class="search-section">
+      <div class="search-bar">
+        <input
+          type="text"
+          id="campoBusca"
+          placeholder="Digite o nome do hóspede..."
+          autocomplete="off"
+          aria-label="Nome do hóspede para busca"
+        />
+        <button class="btn-search" id="btnBuscar">
+          <svg viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg>
+          Buscar
+        </button>
+      </div>
+
+      <div class="table-container">
+        <table>
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Nome</th>
+              <th>CPF</th>
+              <th>Email</th>
+              <th>Telefone</th>
+              <th>Ações</th>
+            </tr>
+          </thead>
+          <tbody id="tabelaResultados">
+            <tr>
+              <td colspan="6">
+                <div class="empty-state">
+                  <svg viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg>
+                  <p>Nenhum resultado ainda</p>
+                  <span>Digite um nome acima e clique em "Buscar".</span>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+
+  <script src="assets/js/main.js"></script>
 </body>
-
 </html>

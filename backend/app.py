@@ -57,7 +57,7 @@ def init_excel():
         workbook.save(EXCEL_FILE)  # Salva o arquivo Excel
 
 
-app = Flask(__name__, static_folder=STATIC_DIR, static_url_path="/" + STATIC_DIR)
+app = Flask(__name__, static_folder=STATIC_DIR, static_url_path="/static")
 
 
 # =========================
